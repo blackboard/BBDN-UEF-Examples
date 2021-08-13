@@ -1,0 +1,17 @@
+{
+  "https://blackboard.com": [
+    {
+      "default": true,
+      "client_id": "CLIENTID",
+      "auth_login_url": "https://developer.blackboard.com/api/v1/gateway/oidcauth",
+      "auth_token_url": "https://developer.blackboard.com/api/v1/gateway/oauth2/jwttoken",
+      "key_set_url": "https://developer.blackboard.com/api/v1/management/applications/CLIENTID/jwks.json",
+      "key_set": null,
+      "private_key_file": "private.key",
+      "public_key_file": "public.key",
+      "deployment_ids": [
+        "DEPLOYMENTID"
+      ]
+    }
+  ]
+}
