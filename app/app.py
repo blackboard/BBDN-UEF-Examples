@@ -226,10 +226,17 @@ def authcode():
         'title' : PAGE_TITLE,
         'learn_url' : 'https://' + Config.config['learn_rest_url'],
         'token' : token,
+        'app_url' : Config.config['app_url'],
         'js_file' : 'tutorial-integration'
     }
 
     return render_template('index.html', **tp_kwargs)
+
+@app.route('/helloworld/', methods=['GET', 'POST'])
+@login_required
+def sayhello():
+    return render_template('helloworld.html')
+
 
 if __name__ == '__main__':
     restAuthController = None

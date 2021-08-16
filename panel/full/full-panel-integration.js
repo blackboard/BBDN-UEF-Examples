@@ -38,6 +38,8 @@ let messageChannel;
 // Initialize panelId. This is used to keep track of our open panels between functions
 let panelId
 
+let panel_url = app_url + '/helloworld/';
+
 /* Add an event listener to listen for messages. When one is received, call onPostMessageReceived() */
 window.addEventListener("message", onPostMessageReceived, false);
 
@@ -94,32 +96,34 @@ function onMessageFromUltra(message) {
             console.log('[UEF TUTORIAL] Looking for base.courses.peek.course.outline.peek.content-manage.edit.document')
             console.log('[UEF TUTORIAL] Looking for base.recentActivity.peek.course.outline.peek.content-manage.edit.document')
             console.log('[UEF TUTORIAL] Got routeName', message.data.routeName)
-            if ( message.data.routeName === 'base.admin.peek.course.outline.peek.content-manage.edit.document' ||
-                 message.data.routeName === 'base.courses.peek.course.outline.peek.content-manage.edit.document' ||
-                 message.data.routeName === 'base.recentActivity.peek.course.outline.peek.content-manage.edit.document'
-            ) {                                 
-                console.log('[UEF TUTORIAL] message.data.routeData.courseId:', message.data.routeData.courseId)
-                console.log('[UEF TUTORIAL] message.data.routeData.id:',message.data.routeData.id)
-                if(message.data.routeData.courseId === course_id && message.data.routeData.id === content_id) {
+            //if ( message.data.routeName === 'base.admin.peek.course.outline.peek.content-manage.edit.document' ||
+            //     message.data.routeName === 'base.courses.peek.course.outline.peek.content-manage.edit.document' ||
+            //     message.data.routeName === 'base.recentActivity.peek.course.outline.peek.content-manage.edit.document'
+            //) {
+            if ( message.data.routeName === 'base.courses.peek.course.outline' ) 
+            {                                 
+            //    console.log('[UEF TUTORIAL] message.data.routeData.courseId:', message.data.routeData.courseId)
+            //    console.log('[UEF TUTORIAL] message.data.routeData.id:',message.data.routeData.id)
+            //   if(message.data.routeData.courseId === course_id && message.data.routeData.id === content_id) {
                     
-                    // So let's ask Ultra to open a panel
-                    setTimeout(() => {
-                        messageChannel.postMessage({
-                            type: 'portal:panel',
-                            correlationId: 'panel-1',
-                            panelType: 'full',
-                            panelTitle: 'Hello World',
-                            attributes: {
-                                onClose: {
-                                    callbackId: 'panel-1-close',
-                                },
-                                onClick: {
-                                    callbackId: 'panel-1-close',
-                                },
+                // So let's ask Ultra to open a panel
+                setTimeout(() => {
+                    messageChannel.postMessage({
+                        type: 'portal:panel',
+                        correlationId: 'panel-1',
+                        panelType: 'full',
+                        panelTitle: 'Hello World',
+                        attributes: {
+                            onClose: {
+                                callbackId: 'panel-1-close',
                             },
-                        });
-                    }, 2000);
-                }
+                            onClick: {
+                                callbackId: 'panel-1-close',
+                            },
+                        },
+                    });
+                }, 2000);
+                //}
 
             }
 
